@@ -1,0 +1,106 @@
+@import "tailwindcss";
+
+@theme {
+  --font-serif: "Playfair Display", Georgia, serif;
+  --font-sans: "Jost", "DM Sans", sans-serif;
+  --font-mono: "DM Mono", monospace;
+  --font-kanit: "Kanit", sans-serif;
+
+  /* ── Palette (aligned with Flutter AppColors) ── */
+  --color-brand-bg: #FFFFFF;
+  --color-brand-surface: #F9FAFB;
+  --color-brand-surface-alt: #FFFFFF;
+  --color-brand-border: #EAEAEC;
+  --color-brand-ink: #15181F;
+  --color-brand-ink-soft: #6B7180;
+  --color-brand-ink-faint: #A6ABB6;
+  --color-brand-primary: #EF8E0E;
+  --color-brand-rose: #E85D75;
+  --color-brand-orange: #F2994A;
+  --color-brand-yellow: #E8B93F;
+  --color-brand-green: #2E9E5B;
+  --color-brand-dark-bg: #0B1220;
+  --color-brand-dark-surface: #111A2E;
+  --color-brand-dark-border: #22304A;
+}
+
+/* ── Keyframes ── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(32px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@keyframes slideLeft {
+  from { opacity: 0; transform: translateX(40px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+@keyframes slideRight {
+  from { opacity: 0; transform: translateX(-40px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.92); }
+  to   { opacity: 1; transform: scale(1); }
+}
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-10px); }
+}
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(239,142,14,0.3); }
+  50%       { box-shadow: 0 0 0 14px rgba(239,142,14,0); }
+}
+
+/* ── Animation & Utility classes ── */
+@layer utilities {
+  .animate-fade-up    { animation: fadeUp 0.7s cubic-bezier(0.16,1,0.3,1) both; }
+  .animate-fade-in    { animation: fadeIn 0.6s ease both; }
+  .animate-slide-left { animation: slideLeft 0.7s cubic-bezier(0.16,1,0.3,1) both; }
+  .animate-slide-right{ animation: slideRight 0.7s cubic-bezier(0.16,1,0.3,1) both; }
+  .animate-scale-in   { animation: scaleIn 0.5s cubic-bezier(0.16,1,0.3,1) both; }
+  .animate-float      { animation: float 4s ease-in-out infinite; }
+  .animate-pulse-glow { animation: pulse-glow 2.5s ease-in-out infinite; }
+
+  .delay-100 { animation-delay: 0.1s; }
+  .delay-200 { animation-delay: 0.2s; }
+  .delay-300 { animation-delay: 0.3s; }
+  .delay-400 { animation-delay: 0.4s; }
+  .delay-500 { animation-delay: 0.5s; }
+  .delay-600 { animation-delay: 0.6s; }
+  .delay-700 { animation-delay: 0.7s; }
+  .delay-800 { animation-delay: 0.8s; }
+
+  .no-scrollbar::-webkit-scrollbar { display: none; }
+  .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+  .text-gradient-primary {
+    background: linear-gradient(135deg, #EF8E0E 0%, #F2994A 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+}
+
+/* ── Base ── */
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background-color: var(--color-brand-bg);
+  color: var(--color-brand-ink);
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+  overscroll-behavior-y: none; /* App feel: no pull to refresh glow */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-tap-highlight-color: transparent; /* Remove blue tap highlight on mobile */
+}
+
+/* ── Custom scrollbar ── */
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--color-brand-border); border-radius: 99px; }
+::-webkit-scrollbar-thumb:hover { background: var(--color-brand-ink-faint); }
