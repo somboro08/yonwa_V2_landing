@@ -46,7 +46,7 @@ export default function Artisans() {
                   </div>
                   <div>
                     <h4 className="text-base font-serif text-brand-ink">Koffi Gbaguidi</h4>
-                    <p className="text-xs text-brand-primary font-mono">Maître Sculpteur · Abomey</p>
+                    <p className="text-xs text-brand-primary font-mono">Guide Touristique · Abomey</p>
                   </div>
                   <span className="ml-auto text-[9px] font-mono bg-brand-primary/10 text-brand-primary px-2 py-1 rounded-full">ACTIF</span>
                 </div>
@@ -61,7 +61,7 @@ export default function Artisans() {
                   <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
                   <div className="absolute bottom-3 left-3 right-3 flex items-end justify-between">
                     <div>
-                      <p className="text-white text-xs font-semibold">Sculpture sur bois</p>
+                      <p className="text-white text-xs font-semibold">De la poterie traditionnelle </p>
                       <p className="text-white/70 text-[9px] font-mono">Abomey, Bénin</p>
                     </div>
                     <span className="text-[9px] font-mono bg-brand-primary text-white px-2.5 py-1 rounded-full">15 000 FCFA</span>
