@@ -1,5 +1,6 @@
 import React from 'react';
-import { Mail, Phone, MapPin, Shield } from 'lucide-react';
+import { Mail, Phone, MapPin, Shield, Download } from 'lucide-react';
+import { APP_LINKS } from '../config';
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -47,17 +48,18 @@ export default function Footer() {
                 </div>
               </a>
 
-              {/* Google Play Store Badge */}
+              {/* Google Play / Android APK Badge */}
               <a 
-                href="#google-play" 
+                href={APP_LINKS.ANDROID_APK}
+                download
                 className="w-52 h-16 bg-white/5 hover:bg-white/10 border border-white/15 hover:border-brand-primary rounded-2xl flex items-center px-4 transition-all hover:scale-[1.02]"
               >
                 <svg className="w-8 h-8 text-white mr-3" viewBox="0 0 24 24" fill="currentColor">
                   <path d="M5,3H19A2,2 0 0,1 21,5V19A2,2 0 0,1 19,21H5A2,2 0 0,1 3,19V5A2,2 0 0,1 5,3M17.5,12L7,6V18L17.5,12Z"/>
                 </svg>
                 <div className="text-left">
-                  <span className="text-[9px] font-mono text-white/50 block leading-none">DISPONIBLE SUR</span>
-                  <span className="text-sm font-sans font-semibold text-white leading-tight">Google Play</span>
+                  <span className="text-[9px] font-mono text-white/50 block leading-none">TÉLÉCHARGER L'APK</span>
+                  <span className="text-sm font-sans font-semibold text-white leading-tight">Pour Android</span>
                 </div>
               </a>
 
