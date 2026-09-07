@@ -2,10 +2,12 @@ import React, { useState, useEffect } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { Download, ArrowRight, Star } from 'lucide-react';
 import { APP_LINKS } from '../config';
+import { useDetectOS } from '../hooks/useDetectOS';
 
 export default function Hero() {
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
   const { scrollY } = useScroll();
+  const { os, getDownloadLink, getDownloadLabel } = useDetectOS();
 
   // Parallax: background image moves slower than scroll
   const bgY = useTransform(scrollY, [0, 700], [0, 200]);
@@ -91,12 +93,12 @@ export default function Hero() {
             className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4"
           >
             <a
-              href={APP_LINKS.ANDROID_APK}
-              download
+              href={getDownloadLink()}
+              download={os !== 'ios'} // On n'ajoute pas d'attribut download pour TestFlight
               className="px-8 py-4 rounded-full bg-brand-primary hover:bg-brand-primary/90 text-white font-sans font-bold text-center transition-all transform hover:scale-[1.03] flex items-center justify-center space-x-3 shadow-2xl shadow-brand-primary/30"
             >
               <Download className="w-5 h-5" />
-              <span>Télécharger l'app (APK)</span>
+              <span>{getDownloadLabel()}</span>
             </a>
             <a
               href="#concept"

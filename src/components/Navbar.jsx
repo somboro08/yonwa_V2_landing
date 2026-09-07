@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { Menu, X, Globe, ArrowRight } from 'lucide-react';
 import { APP_LINKS } from '../config';
+import { useDetectOS } from '../hooks/useDetectOS';
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const { os, getDownloadLink, getDownloadLabel } = useDetectOS();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -55,11 +57,11 @@ export default function Navbar() {
               <span>FR</span>
             </button>
             <a
-              href={APP_LINKS.ANDROID_APK}
-              download
+              href={getDownloadLink()}
+              download={os !== 'ios'}
               className="px-5 py-2.5 rounded-full bg-brand-primary hover:bg-brand-primary/90 text-white text-sm font-sans font-semibold transition-all transform hover:scale-[1.02] flex items-center space-x-2 shadow-md shadow-brand-primary/25"
             >
-              <span>Télécharger APK</span>
+              <span>{getDownloadLabel()}</span>
               <ArrowRight className="w-4 h-4" />
             </a>
           </div>
@@ -88,11 +90,12 @@ export default function Navbar() {
               <span>Français (FR)</span>
             </button>
             <a
-              href="#download"
+              href={getDownloadLink()}
+              download={os !== 'ios'}
               onClick={() => setIsOpen(false)}
               className="py-3 rounded-xl bg-brand-primary text-white text-center font-sans font-semibold transition-all"
             >
-              Télécharger l'application
+              {getDownloadLabel()}
             </a>
           </div>
         </div>
